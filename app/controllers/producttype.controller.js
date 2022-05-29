@@ -1,7 +1,5 @@
 const ProductType = require("../models/producttype.model.js");
 
-
-// Получение всех типов
 exports.findAll = (req, res) => {
     ProductType.getAll((err, data) => {
         if (err)

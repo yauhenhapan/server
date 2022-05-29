@@ -8,7 +8,7 @@ const SubType = function (subtype) {
 };
 
 SubType.getAll = result => {
-    const queryAll = "SELECT id_subtype, name, id_type, img_url FROM PRODUCT_SUBTYPES";
+    const queryAll = "SELECT * FROM PRODUCT_SUBTYPES";
     sql.query(queryAll, (err, res) => {
         if (err) {
             console.log("error: ", err);
@@ -21,7 +21,7 @@ SubType.getAll = result => {
 };
 
 SubType.getSubTypesByTypeId = (typeId, result) => {
-    const queryFindbySubTypeId = `SELECT id_subtype, name, id_type, img_url FROM PRODUCT_SUBTYPES WHERE id_type = '${typeId}'`;
+    const queryFindbySubTypeId = `SELECT * FROM PRODUCT_SUBTYPES WHERE id_type = '${typeId}'`;
     sql.query(queryFindbySubTypeId, (err, res) => {
         if (err) {
             console.log("error: ", err);
@@ -34,7 +34,7 @@ SubType.getSubTypesByTypeId = (typeId, result) => {
 };
 
 SubType.getSubTypeBySubTypeId = (subTypeId, result) => {
-    const queryFindbySubTypeId = `SELECT id_subtype, name, id_type, img_url FROM PRODUCT_SUBTYPES WHERE id_subtype = '${subTypeId}'`;
+    const queryFindbySubTypeId = `SELECT * FROM PRODUCT_SUBTYPES WHERE id_subtype = '${subTypeId}'`;
     sql.query(queryFindbySubTypeId, (err, res) => {
         if (err) {
             console.log("error: ", err);
@@ -47,7 +47,6 @@ SubType.getSubTypeBySubTypeId = (subTypeId, result) => {
             result(null, res[0]);
             return;
         }
-        // когда ничего не удалось найти
         result({ kind: "not_found" }, null);
     });
 };

@@ -1,7 +1,5 @@
 const SubType = require("../models/subtype.model.js");
 
-
-// Получение всех типов
 exports.findAll = (req, res) => {
     SubType.getAll((err, data) => {
         if (err)

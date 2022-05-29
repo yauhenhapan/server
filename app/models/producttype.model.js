@@ -7,7 +7,7 @@ const ProductType = function (producttype) {
 };
 
 ProductType.findById = (typeId, result) => {
-    const queryFindbyId = `SELECT id_type, name FROM PRODUCT_TYPES WHERE id_type = '${typeId}'`;
+    const queryFindbyId = `SELECT * FROM PRODUCT_TYPES WHERE id_type = '${typeId}'`;
     sql.query(queryFindbyId, (err, res) => {
         if (err) {
             console.log("error: ", err);
@@ -20,13 +20,12 @@ ProductType.findById = (typeId, result) => {
             result(null, res[0]);
             return;
         }
-        // когда ничего не удалось найти
         result({ kind: "not_found" }, null);
     });
 };
 
 ProductType.getAll = result => {
-    const queryAll = "SELECT id_type, name, img_url FROM PRODUCT_TYPES";
+    const queryAll = "SELECT * FROM PRODUCT_TYPES";
     sql.query(queryAll, (err, res) => {
         if (err) {
             console.log("error: ", err);
